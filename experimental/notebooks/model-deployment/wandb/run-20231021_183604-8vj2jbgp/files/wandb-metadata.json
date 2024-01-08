@@ -1,0 +1,29 @@
+{
+    "os": "Linux-5.10.124-linuxkit-aarch64-with-glibc2.28",
+    "python": "3.9.17",
+    "heartbeatAt": "2023-10-21T18:36:05.630305",
+    "startedAt": "2023-10-21T18:36:04.991856",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--upload"
+    ],
+    "state": "running",
+    "program": "/app/cli.py",
+    "codePathLocal": "cli.py",
+    "codePath": "cli.py",
+    "host": "6236e356cfa8",
+    "username": "app",
+    "executable": "/home/app/.local/share/virtualenvs/app-4PlAip0Q/bin/python",
+    "cpu_count": 5,
+    "cpu_count_logical": 5,
+    "disk": {
+        "/": {
+            "total": 58.367008209228516,
+            "used": 6.650596618652344
+        }
+    },
+    "memory": {
+        "total": 7.667339324951172
+    }
+}

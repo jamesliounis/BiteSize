@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: deployment-creator-binding
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: generate-mcq
+  namespace: default
+roleRef:
+  kind: Role
+  name: deployment-creator
+  apiGroup: rbac.authorization.k8s.io
+

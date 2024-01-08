@@ -1,0 +1,7 @@
+Flask==2.2.0
+Werkzeug==2.2.0  # Explicitly setting this version to meet Flask's requirement and Dash's restriction
+deepspeed-mii
+pydantic==1.8
+torch==1.10.*
+dash>=2.13.0
+google-cloud-aiplatform

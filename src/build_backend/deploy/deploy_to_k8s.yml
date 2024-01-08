@@ -1,0 +1,122 @@
+---
+- name: Deploy containers to Kubernetes
+  hosts: localhost
+  gather_facts: no
+  environment:
+    K8S_AUTH_KUBECONFIG: /Users/jamesliounis/.kube/config
+  collections:
+    - kubernetes.core
+  vars:
+    ansible_python_interpreter: /opt/anaconda3/bin/python
+  
+
+  tasks:
+    - name: Create a namespace
+      kubernetes.core.k8s:
+        kind: Namespace
+        name: bitesize
+        state: present
+        validate_certs: False
+
+        
+
+    - name: Deploy Generate Test App
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: generate-test
+            namespace: bitesize
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: generate-test
+            template:
+              metadata:
+                labels:
+                  app: generate-test
+              spec:
+                containers:
+                  - name: generate-test
+                    image: gcr.io/ac215-bitesize/generate-test:v1
+                    ports:
+                      - containerPort: 80
+                    resources:
+                      requests:
+                        memory: "1Gi"
+                        cpu: "1"
+                      limits:
+                        memory: "2Gi"
+                        cpu: "2"
+
+    - name: Expose Generate Test App
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: generate-test-service
+            namespace: bitesize
+          spec:
+            selector:
+              app: generate-test
+            ports:
+              - protocol: TCP
+                port: 80
+                targetPort: 80
+            type: LoadBalancer
+
+    - name: Deploy Grading App
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: grade-and-explain
+            namespace: bitesize
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: grade-and-explain
+            template:
+              metadata:
+                labels:
+                  app: grade-and-explain
+              spec:
+                containers:
+                  - name: grade-and-explain
+                    image: gcr.io/ac215-bitesize/grade-and-explain:v1
+                    ports:
+                      - containerPort: 80
+                    resources:
+                      requests:
+                        memory: "1Gi"
+                        cpu: "1"
+                      limits:
+                        memory: "2Gi"
+                        cpu: "2"
+
+    - name: Expose Grading App
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: grade-and-explain-service
+            namespace: bitesize
+          spec:
+            selector:
+              app: grade-and-explain
+            ports:
+              - protocol: TCP
+                port: 80
+                targetPort: 80
+            type: LoadBalancer
+

@@ -1,0 +1,10 @@
+PyPDF2
+python-docx
+textract
+google-cloud-storage
+langchain
+tiktoken
+faiss-cpu
+flask
+gunicorn
+

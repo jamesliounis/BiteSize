@@ -1,0 +1,7 @@
+requests
+google-cloud-storage
+PyPDF2
+python-docx
+Flask
+Flask-Cors
+gunicorn

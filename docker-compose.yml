@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  # Step 1: Prune and quantize model
+  prune_and_quantize:
+    build:
+      context: ./models/prune_and_quantize
+      dockerfile: Dockerfile
+    volumes:
+      - ./models/prune_and_quantize:/app
+    command: ["python", "scripts/prune_model.py && sleep 120"]
+
+  # Step 2: Build new model
+  build_model:
+    build:
+      context: ./models/deploy/build_model
+      dockerfile: Dockerfile
+    volumes:
+      - ./models/deploy/build_model:/app
+    depends_on:
+      - prune_and_quantize
+    entrypoint: ["python3"]
+    command: ["main.py && sleep 120"]
+
+  # Step 3: Deploy model to Vertex AI
+  deploy_model:
+    build:
+      context: ./models/deploy/deploy_model
+      dockerfile: Dockerfile
+    volumes:
+      - ./models/deploy/deploy_model:/app
+    depends_on:
+      - build_model
+    command: ["./run_all.sh && sleep 120"]
+
+  # Step 4: Build Streamlit app
+  build_interactive_app:
+    build:
+      context: ./src/preprocessing_question_gen
+      dockerfile: Dockerfile
+    volumes:
+      - ./src/preprocessing_question_gen:/app
+    depends_on:
+      - deploy_model
+    ports:
+      - "8501:8080"
+    command: ["streamlit", "run", "app.py && sleep 120", "--server.port", "8080"]
+
+  # Step 5: Deploy Streamlit app to Cloud Run
+  deploy_interactive_app:
+    build:
+      context: ./src/deploy_interactive_app
+      dockerfile: Dockerfile
+    volumes:
+      - ./src/deploy_interactive_app:/app
+    depends_on:
+      - build_interactive_app
+    entrypoint: ["./deploy_container.sh && sleep 120"]

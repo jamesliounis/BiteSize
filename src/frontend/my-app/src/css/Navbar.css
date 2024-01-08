@@ -1,0 +1,46 @@
+/* NAV BAR COMPONENT */
+
+.navbar { 
+	display: flex; 
+	align-items: center; 
+	justify-content: center; 
+	position: sticky; 
+	top: 0; 
+	cursor: pointer; 
+} 
+
+.background{
+	background-color: var(--dark);
+}
+
+.nav-list { 
+	width: 70%; 
+	display: flex; 
+	align-items: center; 
+} 
+
+.nav-list li { 
+	list-style: none; 
+	padding: 26px 30px; 
+} 
+
+.nav-list li a { 
+	text-decoration: none; 
+	color: var(--betterWhite); 
+} 
+
+.nav-list li a:hover { 
+	color: var(--brightAccent); 
+} 
+
+.rightnav { 
+	width: 30%; 
+	text-align: right; 
+} 
+
+#search { 
+	padding: 5px; 
+	font-size: 17px; 
+	border: 2px solid rgb(0, 0, 0); 
+	border-radius: 9px; 
+} 

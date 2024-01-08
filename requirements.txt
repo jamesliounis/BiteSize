@@ -1,0 +1,10 @@
+PyPDF2==1.26.0
+python-docx==0.8.11
+textract==1.6.3
+openai==0.27.0
+google-cloud-storage==1.42.0
+huggingface_hub
+transformers
+torch
+
+

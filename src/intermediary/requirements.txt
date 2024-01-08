@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pytest
+requests
+google-cloud-storage
+python-multipart
+aiofiles
