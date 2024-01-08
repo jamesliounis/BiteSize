@@ -178,15 +178,6 @@ docker-compose up --build
 
 # About
 
-### **Group Name**  
-+ BiteSize
-
-### **Team Members**  
-+ James Liounis ([jamesliounis@g.harvard.edu](mailto:jamesliounis@g.harvard.edu))
-+ Hope Neveux ([hopeneveux@g.harvard.edu](mailto:hopeneveux@g.harvard.edu))
-+ Kimberly Llajaruna Peralta ([kllajarunaperalta@g.harvard.edu](mailto:kllajarunaperalta@g.harvard.edu))
-+ Michael Sam Chec ([msamchec@g.harvard.edu](mailto:msamchec@g.harvard.edu))
-
 
 ### **Project**  
 
@@ -218,10 +209,6 @@ Here is a quick overview of our application: our app is divided into three tabs:
 #### Home
 ![Home](./reports/home.png)
 The landing page showcases the app's presentation, and at the bottom, there's a button that redirects users to the "Start Learning" page. This design encourages users to explore and initiate their learning experience with a simple click.
-
-#### About us
-![About us](./reports/about.png)
-Includes pictures, names, and email addresses of the team members, giving users a glimpse into the developers of the app.
 
 #### Start Learning
 ![Start learning](./reports/learn.png)
@@ -288,9 +275,6 @@ This script will set up roles and permissions (all the permissions are being giv
 The entire application is deployed to this Kubernetes cluster:
 
 ![Kubernetes Cluster](./reports/kubernetes_cluster.png)
-
-<!-- 
-JAMES ADD HERE -->
 
 This Kubernetes cluster encompasses all of the relevant components of BiteSize's back-end. These are mainly wrapped into 2 main containers: `bitesize-question-gen`, which handles extracting the text from the documents and generating the questions, and `grade-and-explain`. 
 
