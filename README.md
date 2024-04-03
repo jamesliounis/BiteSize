@@ -3,11 +3,9 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-# Presentation Video: 
-https://drive.google.com/drive/folders/1r0c4AsLgsDGX2tJtgykA7T0yoQtNUBaF
 
 # Blog Post Link:
-https://medium.com/@mescsem/e34b80e78332
+[Link](https://medium.com/@jamesliounis/bitesize-the-generative-ai-learning-app-2e2293edeec4)
 
 # Repository Structure
 
