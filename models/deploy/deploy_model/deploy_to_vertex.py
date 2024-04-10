@@ -8,7 +8,7 @@ aiplatform.init(project=PROJECT_ID, staging_bucket=STAGING_BUCKET, location=LOCA
 
 DEPLOY_IMAGE = 'gcr.io/ac215-bitesize/llama-optimized:v1.0' 
 HEALTH_ROUTE = "/health"
-PREDICT_ROUTE = "/isalive"
+PREDICT_ROUTE = "/predict"
 SERVING_CONTAINER_PORTS = [8080]
 
 model = aiplatform.Model.upload(
