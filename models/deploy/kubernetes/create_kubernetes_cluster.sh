@@ -19,11 +19,4 @@ gcloud container clusters create $CLUSTER_NAME \
     --enable-autoscaling \
     --preemptible
 
-# After creating the cluster, you can set up GPU time-sharing (node taints) 
-# and configure other settings in the GKE dashboard or with further `gcloud` commands.
-
-# Note: 
-# 1. This script assumes you have `gcloud` installed and configured.
-# 2. Ensure you have the necessary quotas in GCP before running this script.
-# 3. Always review and test scripts in a safe environment before running them in production.
 
